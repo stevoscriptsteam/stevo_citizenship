@@ -1,17 +1,24 @@
 {
-    "loadNotify": "¡Debes completar el examen de ciudadanía para jugar!",
-    "escapeNotify": "¡Debes completar el examen de ciudadanía para jugar!",
-
-    "begin_exam": "Comenzar examen",
-
-    "select_all": "¡No puedes seleccionar todas las opciones!",
-
-    "cancel_exam": "Cancelar",
-    "cancel_notify": "Has cancelado el examen.",
-
-    "pass_play": "Jugar",
-    "pass_cancel": "Cancelar",
-
-    "failed_confirm": "Confirmar",
-    "failed_cancel": "Salir"
+    "notify": {
+        "loaded": "¡Debes completar el examen de ciudadanía para jugar!",
+        "escaped": "¡Debes completar el examen de ciudadanía para jugar!",
+        "cancelNotify": "Cancelaste el examen.",
+        "selectAll": "¡No puedes seleccionar todas las opciones!"
+    },
+    "alertdialog": {
+        "startExamHeader": "Examen de Ciudadanía",
+        "startExamContent": "¿Estás listo para comenzar el examen de ciudadanía?",
+        "successHeader": "Examen Aprobado",
+        "successContent": "¡Felicidades! Aprobaste el examen de ciudadanía.",
+        "failedHeader": "Examen Reprobado",
+        "failedContent": "Desafortunadamente, no aprobaste el examen."
+    },
+    "text": {
+        "beginExam": "Comenzar Examen",
+        "cancelExam": "Cancelar",
+        "passPlay": "Jugar",
+        "passCancel": "Cancelar",
+        "failedConfirm": "Confirmar",
+        "failedCancel": "Salir"
+    }
 }
