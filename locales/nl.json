@@ -1,17 +1,24 @@
 {
-    "loadNotify": "Je moet het staatsburgerschapsexamen voltooien om te spelen!",
-    "escapeNotify": "Je moet het staatsburgerschapsexamen voltooien om te spelen!",
-
-    "begin_exam": "Begin Examen",
-
-    "select_all": "Je kunt niet alle opties selecteren!",
-
-    "cancel_exam": "Annuleren",
-    "cancel_notify": "Je hebt het examen geannuleerd.",
-
-    "pass_play": "Spelen",
-    "pass_cancel": "Annuleren",
-
-    "failed_confirm": "Bevestigen",
-    "failed_cancel": "Afsluiten"
+    "notify": {
+        "loaded": "Je moet het burgerschapsexamen voltooien om te spelen!",
+        "escaped": "Je moet het burgerschapsexamen voltooien om te spelen!",
+        "cancelNotify": "Je hebt het examen geannuleerd.",
+        "selectAll": "Je kunt niet alle opties selecteren!"
+    },
+    "alertdialog": {
+        "startExamHeader": "Burgerschapsexamen",
+        "startExamContent": "Ben je klaar om het burgerschapsexamen te starten?",
+        "successHeader": "Examen Geslaagd",
+        "successContent": "Gefeliciteerd! Je bent geslaagd voor het burgerschapsexamen.",
+        "failedHeader": "Examen Mislukt",
+        "failedContent": "Helaas ben je niet geslaagd voor het examen."
+    },
+    "text": {
+        "beginExam": "Begin Examen",
+        "cancelExam": "Annuleren",
+        "passPlay": "Spelen",
+        "passCancel": "Annuleren",
+        "failedConfirm": "Bevestigen",
+        "failedCancel": "Afsluiten"
+    }
 }
