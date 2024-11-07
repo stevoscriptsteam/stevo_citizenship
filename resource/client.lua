@@ -1,20 +1,7 @@
---[[
-   _____ _                     _____           _       _       
-  / ____| |                   / ____|         (_)     | |      
- | (___ | |_ _____   _____   | (___   ___ _ __ _ _ __ | |_ ___ 
-  \___ \| __/ _ \ \ / / _ \   \___ \ / __| '__| | '_ \| __/ __|
-  ____) | ||  __/\ V / (_) |  ____) | (__| |  | | |_) | |_\__ \
- |_____/ \__\___| \_/ \___/  |_____/ \___|_|  |_| .__/ \__|___/
-                                                | |            
-                                                |_|             
-      Discord: https://discord.gg/stevoscripts
-      Website: https://stevoscripts.com
-      Github: https://github.com/stevoscriptss
-]]--	
-
-local Config = lib.require('config')
+local config = lib.require('config')
 local stevo_lib = exports['stevo_lib']:import()
 local examCompleted = false
+lib.locale()
 
 function shuffleQuestions(t)
     local shuffled = {}
@@ -30,13 +17,13 @@ function beginExam()
     local ped = PlayerPedId()	
     if ped then
         local alert = lib.alertDialog({
-            header = Config.StartExamHeader,
-            content = Config.StartExamContent,
+            header = locale('alertdialog.startExamHeader'),
+            content = locale('alertdialog.startExamContent'),
             centered = true,
             cancel = true,
             labels = {
-                confirm = 'Begin Exam',
-                cancel = 'Close'
+                confirm = locale('text.beginExam'),
+                cancel = locale('text.cancelExam'),
             }
         })
         if alert == 'cancel' then
@@ -44,7 +31,7 @@ function beginExam()
         end
 
         local score = 0
-        local questions =  shuffleQuestions(Config.Questions)
+        local questions = shuffleQuestions(config.Questions)
         for _, question in ipairs(questions) do
             :: StartQuestion ::
             local options = {}
@@ -53,7 +40,7 @@ function beginExam()
             end
             local input = lib.inputDialog(question.title, options)
             if not input then 
-                stevo_lib.Notify('You cancelled the exam', 'error')
+                stevo_lib.Notify(locale('notify.cancelNotify'), 'error')
                 return
             end
             local answers = 0
@@ -62,43 +49,45 @@ function beginExam()
                     answers = answers + 1
                 end
             end
-            if answers == #input then stevo_lib.Notify('You cannot select all of the options!', 'error') goto StartQuestion end
+            if answers == #input then 
+                stevo_lib.Notify(locale('notify.selectAll'), 'error') 
+                goto StartQuestion 
+            end
             for i, answer in ipairs(input) do
-                
                 if answer and question.options[i].correct then
                     score = score + 1
                 end
             end
         end
 
-        if score >= Config.PassingScore then
-            local alert = lib.alertDialog({
-                header = Config.SuccessHeader,
-                content = Config.SuccessContent,
+        if score >= config.PassingScore then
+            lib.alertDialog({
+                header = locale('alertdialog.successHeader'),
+                content = locale('alertdialog.successContent'),
                 centered = true,
                 cancel = false,
                 labels = {
-                    confirm = 'Play',
-                    cancel = 'Close'
+                    confirm = locale('text.passPlay'),
+                    cancel = locale('text.passCancel'),
                 }
             })
             lib.callback.await('stevo_citizenship:addCitizenship', false)
             examCompleted = true
             DoScreenFadeOut(800)
             Wait(800)
-            SetEntityCoords(ped, Config.completionCoords, 1, 0, 0, 1)
-            SetEntityHeading(ped, Config.completionCoords.h)
+            SetEntityCoords(ped, config.completionCoords, 1, 0, 0, 1)
+            SetEntityHeading(ped, config.completionCoords.h)
             Wait(500)
             DoScreenFadeIn(1000)
         else
             lib.alertDialog({
-                header = Config.FailedHeader,
-                content = Config.FailedContent,
+                header = locale('alertdialog.failedHeader'),
+                content = locale('alertdialog.failedContent'),
                 centered = true,
                 cancel = false,
                 labels = {
-                    confirm = 'Close',
-                    cancel = 'Close'
+                    confirm = locale('text.failedConfirm'),
+                    cancel = locale('text.failedCancel'),
                 }
             })
         end
@@ -106,52 +95,48 @@ function beginExam()
 end
 
 function escapeCitizenship()
-
     if examCompleted then return end
-
     DoScreenFadeOut(500)
     FreezeEntityPosition(cache.ped, true)
     Wait(800)
 
-    SetEntityCoords(cache.ped, Config.spawnCoords.x, Config.spawnCoords.y, Config.spawnCoords.z)
-    SetEntityHeading(cache.ped, Config.spawnCoords.h)
-
+    SetEntityCoords(cache.ped, config.spawnCoords.x, config.spawnCoords.y, config.spawnCoords.z)
+    SetEntityHeading(cache.ped, config.spawnCoords.h)
     FreezeEntityPosition(cache.ped, false)
     DoScreenFadeIn(1000) 
-    stevo_lib.Notify(Config.escapeNotify, 'error')
+    stevo_lib.Notify(locale('notify.escaped'), 'error', 3000)
 end
 
 function loadCitizenship()
-
     DoScreenFadeOut(500)
     FreezeEntityPosition(cache.ped, true)
     Wait(800)
-
-    SetEntityCoords(cache.ped, Config.spawnCoords.x, Config.spawnCoords.y, Config.spawnCoords.z)
-    SetEntityHeading(cache.ped, Config.spawnCoords.h)
-
-    loadInteractions()
-
+    
+    SetEntityCoords(cache.ped, config.spawnCoords.x, config.spawnCoords.y, config.spawnCoords.z)
+    SetEntityHeading(cache.ped, config.spawnCoords.h)
 
     local citizenZone = lib.zones.box({
         name = "citizenZone",
-        coords = Config.citizenZone.coords,
-        size = Config.citizenZone.size,
-        rotation = Config.citizenZone.rotation,
+        coords = config.citizenZone.coords,
+        size = config.citizenZone.size,
+        rotation = config.citizenZone.rotation,
     })
 
     function citizenZone:onExit(self)
-        if examCompleted then citizenZone:remove() return end
-
+        if examCompleted then 
+            citizenZone:remove() 
+            return 
+        end
         escapeCitizenship()
     end
 
     FreezeEntityPosition(cache.ped, false)
     DoScreenFadeIn(1000) 
-    stevo_lib.Notify(Config.loadNotify, 'info')
+
+    stevo_lib.Notify(locale('notify.loaded'), 'info', 3000)
 end
 
-function OnPlayerLoaded()
+local function playerLoaded()
     local isCitizen = lib.callback.await('stevo_citizenship:checkCitizenship', false)
 
     if not isCitizen then
@@ -159,13 +144,83 @@ function OnPlayerLoaded()
     end
 end
 
-AddEventHandler('onResourceStart', function(resourceName)
-    if (GetCurrentResourceName() ~= resourceName) then
-      return
-    end
-    OnPlayerLoaded()
+AddEventHandler('onResourceStart', function(resource)
+    if resource ~= cache.resource then return end
+    playerLoaded()
 end)
 
 RegisterNetEvent('stevo_lib:playerLoaded', function()
-    OnPlayerLoaded()
+    if not config.autoCheck then return end
+
+    playerLoaded()
 end)
+
+exports('playerLoaded', playerLoaded)
+
+CreateThread(function()
+    if config.interaction.type == "marker" then
+        local point = lib.points.new({
+            coords = config.examCoords,
+            distance = 8,
+        })  
+    function point:nearby()
+        DrawMarker(config.interaction.markertype, config.examCoords, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, config.interaction.markersize.x, config.interaction.markersize.y, config.interaction.markersize.z,  config.interaction.markercolor.r, config.interaction.markercolor.g, config.interaction.markercolor.b, 200, false, true, 2.0, false, false, false, false)
+        local onScreen, _x, _y = World3dToScreen2d(config.examCoords.x, config.examCoords.y, config.examCoords.z+1)
+        if onScreen then
+            SetTextScale(0.4, 0.4)
+            SetTextFont(4)
+            SetTextProportional(1)
+            SetTextColour(255, 255, 255, 255)
+            SetTextOutline()
+            SetTextEntry("STRING")
+            SetTextCentre(true)
+            AddTextComponentString("[~b~E~w~] "..config.interaction.markerlabel.."")
+            DrawText(_x, _y)
+        end
+        if self.currentDistance < 3 and IsControlJustReleased(0, 38) then
+            beginExam()
+        end
+    end
+end
+    if config.interaction.type == "target" then 
+        local options = {
+            options = {
+                {
+                name = 'citizenship',
+                type = "client",
+                action = beginExam,
+                icon =  config.interaction.targeticon,
+                label = config.interaction.targetlabel,
+                }
+            },
+            distance = config.interaction.targetdistance,
+            rotation = 45
+        }
+        stevo_lib.target.AddBoxZone('stevo_citizenship:beginExam', config.examCoords, config.interaction.targetradius, options)    
+    end
+    if config.interaction.type == "3dtext" then 
+        local point = lib.points.new({
+            coords = config.examCoords,
+            distance = 8,
+        })
+    function point:nearby()
+        local onScreen, _x, _y = World3dToScreen2d(config.examCoords.x, config.examCoords.y, config.examCoords.z+1)
+        if onScreen then
+            SetTextScale(0.4, 0.4)
+            SetTextFont(4)
+            SetTextProportional(1)
+            SetTextColour(255, 255, 255, 255)
+            SetTextOutline()
+            SetTextEntry("STRING")
+            SetTextCentre(true)
+            AddTextComponentString("[~b~E~w~] "..config.interaction.markerlabel.."")
+            DrawText(_x, _y)
+        end
+        if self.currentDistance < 3 and IsControlJustReleased(0, 38) then
+            beginExam()
+        end
+    end
+end
+end)
+
+

@@ -1,0 +1,17 @@
+{
+    "loadNotify": "Je moet het staatsburgerschapsexamen voltooien om te spelen!",
+    "escapeNotify": "Je moet het staatsburgerschapsexamen voltooien om te spelen!",
+
+    "begin_exam": "Begin Examen",
+
+    "select_all": "Je kunt niet alle opties selecteren!",
+
+    "cancel_exam": "Annuleren",
+    "cancel_notify": "Je hebt het examen geannuleerd.",
+
+    "pass_play": "Spelen",
+    "pass_cancel": "Annuleren",
+
+    "failed_confirm": "Bevestigen",
+    "failed_cancel": "Afsluiten"
+}

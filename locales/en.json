@@ -1,0 +1,24 @@
+{
+    "notify": {
+        "loaded": "You must complete the citizenship exam to play!",
+        "escaped": "You must complete the citizenship exam to play!",
+        "cancelNotify": "You cancelled the exam.",
+        "selectAll": "You cannot select all of the options!"
+    },
+    "alertdialog": {
+        "startExamHeader": "Citizenship Exam",
+        "startExamContent": "Are you ready to begin the citizenship exam?",
+        "successHeader": "Exam Passed",
+        "successContent": "Congratulations! You passed the citizenship exam.",
+        "failedHeader": "Exam Failed",
+        "failedContent": "Unfortunately, you did not pass the exam."
+    },
+    "text": {
+        "beginExam": "Begin Exam",
+        "cancelExam": "Cancel",
+        "passPlay": "Play",
+        "passCancel": "Cancel",
+        "failedConfirm": "Confirm",
+        "failedCancel": "Exit"
+    }
+}

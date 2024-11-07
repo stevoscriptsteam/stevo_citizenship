@@ -1,34 +1,33 @@
-fx_version "cerulean"
-game "gta5"
+fx_version 'cerulean'
+game 'gta5'
+use_experimental_fxv2_oal 'yes'
+lua54 'yes'
 
-author "StevoScripts | steve"
-description "Citizenship Exam System for preventing trolls!"
-version "1.2.0"
+author 'StevoScripts | steve & s4t4n'
+description 'Citizenship Exam System for preventing trolls!'
+version '1.2.5'
 
-shared_scripts {
-    'config.lua',
+shared_script {
     '@ox_lib/init.lua',
+    'config.lua'
 }
 
 client_scripts {
     'resource/client.lua',
-    'resource/interactions/**.lua',
 }
 
 server_scripts {
-    '@oxmysql/lib/MySQL.lua',
     'resource/server.lua',
+    '@oxmysql/lib/MySQL.lua'
+}
+
+files {
+    'locales/*.json'
 }
 
 dependencies {
-    'ox_lib',
-    'oxmysql',
-    'stevo_lib',
-    '/server:4500',
+    'ox_lib'
 }
-   
-
-lua54 "yes"
 
 
 

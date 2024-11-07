@@ -1,0 +1,17 @@
+{
+    "loadNotify": "¡Debes completar el examen de ciudadanía para jugar!",
+    "escapeNotify": "¡Debes completar el examen de ciudadanía para jugar!",
+
+    "begin_exam": "Comenzar examen",
+
+    "select_all": "¡No puedes seleccionar todas las opciones!",
+
+    "cancel_exam": "Cancelar",
+    "cancel_notify": "Has cancelado el examen.",
+
+    "pass_play": "Jugar",
+    "pass_cancel": "Cancelar",
+
+    "failed_confirm": "Confirmar",
+    "failed_cancel": "Salir"
+}
