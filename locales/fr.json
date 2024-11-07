@@ -1,19 +1,24 @@
 {
-    
-    "loadNotify" : "Vous devez passer l'examen de citoyenneté pour jouer!",
-    "escapeNotify" : "Vous devez passer l'examen de citoyenneté pour jouer !",
-
-    "begin_exam" : "Commencer l'examen",
-
-    "select_all" : "Vous ne pouvez pas choisir toutes les options !",
-
-    "cancel_exam" : "Annuler",
-    "cancel_notify" : "Vous avez annulez l'examen.",
-
-    "pass_play" : "Jouer",
-    "pass_cancel" : "Annuler",
-
-    "failed_confirm" : "Confirmer",
-    "failed_cancel" : "Quitter"
-
+    "notify": {
+        "loaded": "Vous devez passer l'examen de citoyenneté pour jouer !",
+        "escaped": "Vous devez passer l'examen de citoyenneté pour jouer !",
+        "cancelNotify": "Vous avez annulé l'examen.",
+        "selectAll": "Vous ne pouvez pas sélectionner toutes les options !"
+    },
+    "alertdialog": {
+        "startExamHeader": "Examen de Citoyenneté",
+        "startExamContent": "Êtes-vous prêt à commencer l'examen de citoyenneté ?",
+        "successHeader": "Examen Réussi",
+        "successContent": "Félicitations ! Vous avez réussi l'examen de citoyenneté.",
+        "failedHeader": "Examen Échoué",
+        "failedContent": "Malheureusement, vous n'avez pas réussi l'examen."
+    },
+    "text": {
+        "beginExam": "Commencer l'Examen",
+        "cancelExam": "Annuler",
+        "passPlay": "Jouer",
+        "passCancel": "Annuler",
+        "failedConfirm": "Confirmer",
+        "failedCancel": "Quitter"
+    }
 }
