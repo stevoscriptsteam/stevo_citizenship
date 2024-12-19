@@ -75,7 +75,7 @@ function beginExam()
             examCompleted = true
             DoScreenFadeOut(800)
             Wait(800)
-            SetEntityCoords(ped, config.completionCoords, 1, 0, 0, 1)
+            SetEntityCoords(ped, config.completionCoords.x, config.completionCoords.y, config.completionCoords.z, 1, 0, 0, 1)
             SetEntityHeading(ped, config.completionCoords.h)
             Wait(500)
             DoScreenFadeIn(1000)
