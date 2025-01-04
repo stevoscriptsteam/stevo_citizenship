@@ -1,0 +1,24 @@
+{
+    "notify": {
+        "loaded": "Du musst die Staatsbürgerschaftsprüfung bestehen, um zu spielen!",
+        "escaped": "Du musst die Staatsbürgerschaftsprüfung bestehen, um zu spielen!",
+        "cancelNotify": "Du hast die Prüfung abgebrochen.",
+        "selectAll": "Du kannst nicht alle Optionen auswählen!"
+    },
+    "alertdialog": {
+        "startExamHeader": "Staatsbürgerschaftsprüfung",
+        "startExamContent": "Bist du bereit, die Staatsbürgerschaftsprüfung zu beginnen?",
+        "successHeader": "Prüfung bestanden",
+        "successContent": "Glückwunsch! Du hast die Staatsbürgerschaftsprüfung bestanden.",
+        "failedHeader": "Prüfung nicht bestanden",
+        "failedContent": "Leider hast du die Prüfung nicht bestanden."
+    },
+    "text": {
+        "beginExam": "Prüfung starten",
+        "cancelExam": "Abbrechen",
+        "passPlay": "Spielen",
+        "passCancel": "Abbrechen",
+        "failedConfirm": "Bestätigen",
+        "failedCancel": "Beenden"
+    }
+}
